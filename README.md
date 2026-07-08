@@ -1,40 +1,46 @@
 # Agua Fria Meet & Confer Data Portal
 
-This is a static, GitHub Pages-ready prototype for a modern Meet & Confer data portal.
+This is a static GitHub Pages-ready prototype for a modern Meet & Confer portal.
 
-## What's included
+## What is included
 
-- `index.html` - full single-page portal
-- `assets/styles.css` - responsive visual design
-- `assets/app.js` - dashboard rendering, filters, chart, calculator
-- `data/portal-data.js` - editable data source
+- `index.html` — the full single-page portal
+- `assets/styles.css` — visual design and responsive layout
+- `assets/app.js` — rendering, filters, search, charts, and dashboard logic
+- `data/portal-database.js` — the lightweight editable database
+- `data/schema-notes.md` — field guide for updating the database
 
-## Publish to GitHub Pages
+## Major features
+
+- Proposal and priority tracker
+- Year-by-year historical outcome pages
+- Search and filters
+- Chart.js visual dashboards
+- “Can We Afford It?” finance framing
+- Searchable document/source library
+- Database-first structure that does not require a server
+
+## How to publish on GitHub Pages
 
 1. Create a new GitHub repository.
-2. Upload all files in this folder to the repository root.
-3. Go to **Settings > Pages**.
-4. Under **Build and deployment**, choose:
-   - Source: `Deploy from a branch`
-   - Branch: `main`
-   - Folder: `/root`
-5. Save.
-6. GitHub will provide a public URL after deployment.
+2. Upload all files from this folder.
+3. Go to **Settings → Pages**.
+4. Under **Build and deployment**, choose **Deploy from a branch**.
+5. Select the `main` branch and `/root` folder.
+6. Save.
 
-## Editing content
+GitHub will provide a public Pages URL after deployment.
 
-Most site data is in `data/portal-data.js`. Update this file when priorities, budget figures, provider contacts, or source links change.
+## How to update the site
 
-## Source notes
+Most content lives in:
 
-The prototype was built from public information on the current Agua Fria Meet & Confer Google Site, including:
+```text
+data/portal-database.js
+```
 
-- Home / historical priorities
-- FY2025 budget snapshot
-- District Financial Information glossary
-- Budget Spending Comparison
-- Staff Compensation pages
-- Benefits page
-- Law & Policy page
+Edit that file after meetings or budget updates, commit the change, and the public dashboard will update automatically.
 
-Review all figures, dates, and wording before publishing as an official district resource.
+## Important review note
+
+This prototype uses public information from the current Agua Fria Meet & Confer site and placeholder outcome labels where final outcomes were not coded. Review all figures, dates, and labels before public release.

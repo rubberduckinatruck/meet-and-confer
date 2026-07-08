@@ -82,3 +82,22 @@ output { display: block; margin-top: 1rem; background: #f8fafc; padding: 1rem; b
   .cards.four, .cards.three, .cards.two, .calc-grid { grid-template-columns: 1fr; }
   .timeline-item { grid-template-columns: 1fr; }
 }
+code { background: #eef2f7; padding: .1rem .35rem; border-radius: 8px; }
+small { color: var(--muted); }
+.toolbar.split { justify-content: flex-start; display: grid; grid-template-columns: minmax(220px, 1.4fr) minmax(180px, .7fr) minmax(180px, .7fr); gap: 1rem; align-items: end; }
+.toolbar label { width: 100%; }
+input[type="search"] { width: 100%; }
+.chart-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 1rem; }
+.chart-card h3 { margin: .25rem .5rem 1rem; }
+.afford-card { box-shadow: none; }
+.timeline-title-row { display: flex; justify-content: space-between; align-items: start; gap: 1rem; }
+.timeline-title-row h3 { margin: 0 0 .5rem; }
+.search-card p { display: -webkit-box; -webkit-line-clamp: 3; -webkit-box-orient: vertical; overflow: hidden; }
+.code-callout { font-family: inherit; }
+.pill.in-progress { background: #fff4db; color: var(--warn); }
+.pill.needs-outcome-coding, .pill.needs-current-status, .pill.needs-definition { background: #e0f2fe; color: #075985; }
+.pill.archive { background: #f1f5f9; color: #334155; }
+.pill.in-discussion { background: #fff4db; color: var(--warn); }
+@media (max-width: 900px) {
+  .toolbar.split, .chart-grid { grid-template-columns: 1fr; }
+}
