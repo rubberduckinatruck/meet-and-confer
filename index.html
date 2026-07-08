@@ -1,0 +1,185 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Agua Fria Meet & Confer Data Portal</title>
+  <meta name="description" content="Modern Meet & Confer data portal for Agua Fria Union High School District." />
+  <link rel="stylesheet" href="assets/styles.css" />
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+  <header class="site-header">
+    <a class="skip-link" href="#main">Skip to content</a>
+    <div class="brand">
+      <span class="brand-mark">M&C</span>
+      <div>
+        <p class="eyebrow">Agua Fria Union High School District</p>
+        <h1>Meet & Confer Data Portal</h1>
+      </div>
+    </div>
+    <nav class="top-nav" aria-label="Main navigation">
+      <a href="#dashboard">Dashboard</a>
+      <a href="#tracker">Tracker</a>
+      <a href="#finance">Finance</a>
+      <a href="#compensation">Compensation</a>
+      <a href="#history">History</a>
+      <a href="#law">Law & Policy</a>
+    </nav>
+  </header>
+
+  <main id="main">
+    <section id="dashboard" class="hero section-grid">
+      <div class="hero-copy">
+        <p class="eyebrow">Fresh site concept</p>
+        <h2>One place to follow priorities, proposals, finances, and recommendations.</h2>
+        <p>This portal reorganizes the current Meet & Confer website into a modern decision dashboard. It keeps the existing district information, but presents it around the questions employees ask most often: What are we asking for? Can the district afford it? How do we compare? What happens next?</p>
+        <div class="hero-actions">
+          <a class="button" href="#tracker">View Proposal Tracker</a>
+          <a class="button secondary" href="#finance">Explore FY2025 Budget</a>
+        </div>
+      </div>
+      <aside class="status-card" aria-label="Current Meet and Confer status">
+        <p class="eyebrow">2025–2026 cycle</p>
+        <h3>Current Status</h3>
+        <dl>
+          <div><dt>Phase</dt><dd>Priorities in progress</dd></div>
+          <div><dt>Board action</dt><dd>Pending</dd></div>
+          <div><dt>Focus areas</dt><dd>Compensation, Benefits, Working Conditions</dd></div>
+          <div><dt>Contact</dt><dd><a href="mailto:gturnbull@aguafria.org">gturnbull@aguafria.org</a></dd></div>
+        </dl>
+      </aside>
+    </section>
+
+    <section class="section" aria-labelledby="quick-stats-title">
+      <div class="section-heading">
+        <p class="eyebrow">At a glance</p>
+        <h2 id="quick-stats-title">FY2025 budget snapshot</h2>
+        <p>Budget values imported from the current public Meet & Confer FY2025 budget page.</p>
+      </div>
+      <div id="budgetCards" class="cards four"></div>
+    </section>
+
+    <section id="tracker" class="section alt" aria-labelledby="tracker-title">
+      <div class="section-heading">
+        <p class="eyebrow">Current negotiations</p>
+        <h2 id="tracker-title">Proposal & Priority Tracker</h2>
+        <p>Use this as the live employee-facing status board. Update the status column after each meeting.</p>
+      </div>
+      <div class="toolbar">
+        <label>Filter by status
+          <select id="statusFilter">
+            <option value="all">All</option>
+            <option value="Open">Open</option>
+            <option value="In Discussion">In Discussion</option>
+            <option value="Needs Update">Needs Update</option>
+          </select>
+        </label>
+      </div>
+      <div class="table-wrap">
+        <table>
+          <thead><tr><th>Topic</th><th>Employee Priority</th><th>Source Year</th><th>Status</th><th>Notes</th></tr></thead>
+          <tbody id="priorityRows"></tbody>
+        </table>
+      </div>
+    </section>
+
+    <section id="finance" class="section-grid section" aria-labelledby="finance-title">
+      <div>
+        <p class="eyebrow">District finance explorer</p>
+        <h2 id="finance-title">Where the financial conversation starts</h2>
+        <p>The current site explains Arizona school finance concepts such as M&O, RCL, DAA, ADM, Classroom Site Fund, carryforward, overrides, bonds, and UCO. This redesign turns those definitions into a guided finance explorer for employees.</p>
+        <div class="callout">
+          <strong>Key distinction:</strong> employees need to see whether dollars are recurring, one-time, restricted, or unrestricted before judging whether a proposal is sustainable.
+        </div>
+      </div>
+      <div class="chart-card">
+        <canvas id="budgetChart" aria-label="FY2025 budget chart"></canvas>
+      </div>
+    </section>
+
+    <section id="compensation" class="section alt" aria-labelledby="comp-title">
+      <div class="section-heading">
+        <p class="eyebrow">Compensation center</p>
+        <h2 id="comp-title">Salary, stipend, and market comparison hub</h2>
+        <p>The current site already tracks compensation changes since RedForEd and compares certified, classified, administrative, and extra duty compensation. This redesign makes that information searchable and action-oriented.</p>
+      </div>
+      <div class="cards three">
+        <article class="card"><h3>Certified Staff</h3><p>Benchmarks: Bachelor’s Year 0, Bachelor’s Year 5, Master’s Year 0, Master’s Year 5. Include 301, performance pay, and Instructional Improvement funds when available.</p></article>
+        <article class="card"><h3>Classified Staff</h3><p>Track starting pay, wage growth, competitive position, performance pay, holiday compensation, and hard-to-fill role comparisons.</p></article>
+        <article class="card"><h3>Administration</h3><p>Use starting salary comparisons because schedules and credit for experience vary across districts. Include stipends and performance pay when available.</p></article>
+      </div>
+      <div class="calculator">
+        <h3>Raise impact calculator</h3>
+        <p>Local estimate only. Enter a current salary and proposed recurring increase.</p>
+        <div class="calc-grid">
+          <label>Current salary <input id="salaryInput" type="number" value="55000" min="0"></label>
+          <label>Increase % <input id="raiseInput" type="number" value="3" min="0" step="0.1"></label>
+          <label>One-time stipend <input id="stipendInput" type="number" value="0" min="0"></label>
+        </div>
+        <output id="raiseOutput"></output>
+      </div>
+    </section>
+
+    <section id="comparisons" class="section" aria-labelledby="compare-title">
+      <div class="section-heading">
+        <p class="eyebrow">Comparison hub</p>
+        <h2 id="compare-title">Neighboring and peer districts</h2>
+        <p>The current site identifies neighboring districts and Auditor General operational peers for comparisons.</p>
+      </div>
+      <div class="cards two">
+        <article class="card"><h3>Neighboring Districts</h3><ul id="neighborList"></ul></article>
+        <article class="card"><h3>Auditor General Operational Peer Group 2</h3><ul id="peerList"></ul></article>
+      </div>
+    </section>
+
+    <section id="history" class="section alt" aria-labelledby="history-title">
+      <div class="section-heading">
+        <p class="eyebrow">Institutional memory</p>
+        <h2 id="history-title">Meet & Confer priorities through the years</h2>
+        <p>Historical priorities become a timeline so future committees can see recurring concerns and track outcomes.</p>
+      </div>
+      <div id="timeline" class="timeline"></div>
+    </section>
+
+    <section id="benefits" class="section-grid section" aria-labelledby="benefits-title">
+      <div>
+        <p class="eyebrow">Benefits dashboard</p>
+        <h2 id="benefits-title">Insurance and benefit resources</h2>
+        <p>Healthcare affordability has appeared repeatedly as a priority. The redesigned benefits page should show contribution history, premium trends, employee cost examples, and provider contacts.</p>
+      </div>
+      <div class="cards compact" id="benefitCards"></div>
+    </section>
+
+    <section id="law" class="section alt" aria-labelledby="law-title">
+      <div class="section-heading">
+        <p class="eyebrow">Law & policy</p>
+        <h2 id="law-title">What Meet & Confer can and cannot do</h2>
+        <p>The process is informal: meeting, consulting, and discussing are primary objectives. Recommendations do not replace the Governing Board’s legal authority over policy, salary, and contract provisions.</p>
+      </div>
+      <div class="cards three" id="lawCards"></div>
+    </section>
+
+    <section id="documents" class="section" aria-labelledby="docs-title">
+      <div class="section-heading">
+        <p class="eyebrow">Document library</p>
+        <h2 id="docs-title">Source links and update queue</h2>
+        <p>Keep original source pages available while the portal becomes the easier entry point.</p>
+      </div>
+      <div class="table-wrap">
+        <table>
+          <thead><tr><th>Page</th><th>Use in new portal</th><th>Source</th></tr></thead>
+          <tbody id="sourceRows"></tbody>
+        </table>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <p>Prototype portal built from public Agua Fria Meet & Confer site information. Review all figures and dates before publishing.</p>
+  </footer>
+
+  <script src="data/portal-data.js"></script>
+  <script src="assets/app.js"></script>
+</body>
+</html>
